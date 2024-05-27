@@ -6,7 +6,7 @@ import HeaderNav from './HeaderNav/HeaderNav';
 function Header() {
     return (
         <>
-            <header>
+            <header className="sticky top-0 lg:static z-50">
                 <HeaderTop />
                 <HeaderNav />
             </header>

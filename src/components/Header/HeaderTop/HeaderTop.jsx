@@ -2,7 +2,7 @@ import { FiUser, FiPhone } from 'react-icons/fi';
 
 function HeaderTop() {
     return (
-        <div className="border-b border-[#EBEBEB] py-2 text-[#777] text-[15px] leading-6">
+        <div className="border-b bg-white border-[#EBEBEB] py-2 text-[#777] text-[15px] leading-6 z-50">
             <div className="page-wrapper flex justify-between items-center">
                 <div className="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors">
                     <FiPhone />

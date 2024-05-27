@@ -5,6 +5,9 @@ export default {
         extend: {},
         colors: {
             primary: '#0984e3',
+            white: '#fff',
+            black: '#000',
+            red: '#d63031',
         },
     },
     plugins: [],
