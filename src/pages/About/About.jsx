@@ -1,5 +1,5 @@
 import Breadcrumb from '~/components/Breadcrumb/Breadcrumb';
-import Banner from './Banner/Banner';
+import React, { Suspense } from 'react';
 import img1 from '~/assets/images/img-1.jpg';
 import img2 from '~/assets/images/img-2.jpg';
 import img7 from '~/assets/images/7.png';
@@ -7,11 +7,22 @@ import img8 from '~/assets/images/8.png';
 import img9 from '~/assets/images/9.png';
 import { brands } from '~/constants';
 
+const Banner = React.lazy(() => import('./Banner/Banner'));
+
 function About() {
     return (
         <main>
             <Breadcrumb>About</Breadcrumb>
-            <Banner />
+            <Suspense
+                fallback={
+                    <div className="loading-spinner text-center">
+                        <span className="loader block mt-20"></span>
+                    </div>
+                }
+            >
+                <Banner />
+            </Suspense>
+
             <section className="bg-[#f9f9f9] pt-[60px] pb-[50px] mb-[80px]">
                 <div className="page-wrapper flex lg:flex-row flex-col justify-between items-start gap-5">
                     <div className="lg:w-1/2 w-full lg:pr-14">
