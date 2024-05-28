@@ -34,18 +34,18 @@ function Countdown({ targetDate }) {
             {difference > 0 ? (
                 <div className="flex items-center gap-3 text-center">
                     <div>
-                        <p className="text-[30px] text-primary font-semibold">{timeLeft.hours}</p>
-                        <span className="text-[#333] text-sm">Hours</span>
+                        <p className="lg:text-[30px] text-base text-primary font-semibold">{timeLeft.hours}</p>
+                        <span className="text-[#333] text-xs lg:text-sm">Hours</span>
                     </div>
-                    <span className="text-4xl">:</span>
+                    <span className="lg:text-4xl text-2xl">:</span>
                     <div>
-                        <p className="text-[30px] text-primary font-semibold">{timeLeft.minutes}</p>
-                        <span className="text-[#333] text-sm">Minutes</span>
+                        <p className="lg:text-[30px] text-base text-primary font-semibold">{timeLeft.minutes}</p>
+                        <span className="text-[#333] text-xs lg:text-sm">Minutes</span>
                     </div>
-                    <span className="text-4xl">:</span>
+                    <span className="lg:text-4xl text-2xl">:</span>
                     <div>
-                        <p className="text-[30px] text-primary font-semibold">{timeLeft.seconds}</p>
-                        <span className="text-[#333] text-sm">Seconds</span>
+                        <p className="lg:text-[30px] text-base text-primary font-semibold">{timeLeft.seconds}</p>
+                        <span className="text-[#333] text-xs lg:text-sm">Seconds</span>
                     </div>
                 </div>
             ) : (
