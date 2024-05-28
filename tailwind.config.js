@@ -8,6 +8,7 @@ export default {
             white: '#fff',
             black: '#000',
             red: '#d63031',
+            gray: '#ebebeb',
         },
     },
     plugins: [],

@@ -8,11 +8,16 @@ import { FaFacebook, FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { navLinks } from '~/constants';
 import Logo from '~/assets/images/logo.svg';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function HeaderNav() {
     const [isSticky, setIsSticky] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [showTabContent, setShowTabContent] = useState(true);
+    const products = useSelector((state) => state.dataProduct.products);
+    const categorys = products.map((item) => item.category.name);
+    const uniqueCategorys = [...new Set(categorys)];
+    console.log(uniqueCategorys);
 
     const activeNavLink = ({ isActive }) => (isActive ? 'active' : '');
 
@@ -186,14 +191,16 @@ function HeaderNav() {
                             </ul>
                         ) : (
                             <ul>
-                                <li className="border-[#ffffff14] border-b">
-                                    <NavLink
-                                        onClick={handleMenuClose}
-                                        className={`inline-block py-[10px] pl-5 pr-[45px] uppercase text-[13px] ${activeNavLink}`}
-                                    >
-                                        Category
-                                    </NavLink>
-                                </li>
+                                {uniqueCategorys?.map((category, index) => (
+                                    <li key={index} className="border-[#ffffff14] border-b">
+                                        <Link
+                                            onClick={handleMenuClose}
+                                            className={`inline-block py-[10px] pl-5 pr-[45px] uppercase text-[13px] ${activeNavLink}`}
+                                        >
+                                            {category}
+                                        </Link>
+                                    </li>
+                                ))}
                             </ul>
                         )}
 

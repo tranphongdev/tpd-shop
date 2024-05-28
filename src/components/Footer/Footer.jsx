@@ -29,7 +29,10 @@ function Footer() {
                     <ul>
                         {navLinks?.map((nav, index) => (
                             <li key={index}>
-                                <Link className="text-[#777] text-sm font-light block mb-2" to={nav?.path}>
+                                <Link
+                                    className="text-[#777] text-sm font-light block mb-2 hover:text-primary transition-colors"
+                                    to={nav?.path}
+                                >
                                     {nav?.title}
                                 </Link>
                             </li>
@@ -40,22 +43,34 @@ function Footer() {
                     <h4 className="font-medium text-base mb-5 capitalize">Customer Service</h4>
                     <ul>
                         <li>
-                            <Link className="text-[#777] text-sm font-light block mb-2" to="">
+                            <Link
+                                className="text-[#777] text-sm font-light block mb-2 hover:text-primary transition-colors"
+                                to=""
+                            >
                                 Payment Methods
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-[#777] text-sm font-light block mb-2" to="">
+                            <Link
+                                className="text-[#777] text-sm font-light block mb-2 hover:text-primary transition-colors"
+                                to=""
+                            >
                                 Returns
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-[#777] text-sm font-light block mb-2" to="">
+                            <Link
+                                className="text-[#777] text-sm font-light block mb-2 hover:text-primary transition-colors"
+                                to=""
+                            >
                                 Shipping
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-[#777] text-sm font-light block mb-2" to="">
+                            <Link
+                                className="text-[#777] text-sm font-light block mb-2 hover:text-primary transition-colors"
+                                to=""
+                            >
                                 Privacy Policy
                             </Link>
                         </li>
@@ -65,22 +80,34 @@ function Footer() {
                     <h4 className="font-medium text-base mb-5 capitalize">My Account</h4>
                     <ul>
                         <li>
-                            <Link className="text-[#777] text-sm font-light block mb-2" to="">
+                            <Link
+                                className="text-[#777] text-sm font-light block mb-2 hover:text-primary transition-colors"
+                                to=""
+                            >
                                 Account Details
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-[#777] text-sm font-light block mb-2" to="">
+                            <Link
+                                className="text-[#777] text-sm font-light block mb-2 hover:text-primary transition-colors"
+                                to=""
+                            >
                                 View Cart
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-[#777] text-sm font-light block mb-2" to="">
+                            <Link
+                                className="text-[#777] text-sm font-light block mb-2 hover:text-primary transition-colors"
+                                to=""
+                            >
                                 My Wishlist
                             </Link>
                         </li>
                         <li>
-                            <Link className="text-[#777] text-sm font-light block mb-2" to="">
+                            <Link
+                                className="text-[#777] text-sm font-light block mb-2 hover:text-primary transition-colors"
+                                to=""
+                            >
                                 Track My Order
                             </Link>
                         </li>
@@ -90,7 +117,7 @@ function Footer() {
 
             <div className="border-t border-[#ebebeb] py-4 flex flex-col lg:flex-row items-center justify-between gap-3">
                 <p className="text-center text-[#777] font-light text-sm">
-                    Copyright © 2023 -{' '}
+                    Copyright © 2024 -{' '}
                     <span className="font-bold cursor-pointer hover:text-primary transition-colors">TranPhongDev</span>.
                     All Rights Reserved.
                 </p>
