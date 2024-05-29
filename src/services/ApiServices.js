@@ -6,6 +6,9 @@ const ApiServices = {
     GET_ALL_PRODUCT: async () => {
         return await axios(URL);
     },
+    GET_PRODUCT_BY_NAME: async (slug) => {
+        return await axios(`${URL}/${slug}`);
+    },
 };
 
 export default ApiServices;

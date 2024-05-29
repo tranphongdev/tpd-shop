@@ -17,7 +17,6 @@ function HeaderNav() {
     const products = useSelector((state) => state.dataProduct.products);
     const categorys = products.map((item) => item.category.name);
     const uniqueCategorys = [...new Set(categorys)];
-    console.log(uniqueCategorys);
 
     const activeNavLink = ({ isActive }) => (isActive ? 'active' : '');
 

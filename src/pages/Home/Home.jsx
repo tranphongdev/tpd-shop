@@ -1,7 +1,5 @@
 import ApiServices from '~/services/ApiServices';
-import Featured from './Featured/Featured';
-import Sliders from './Sliders/Sliders';
-import { useEffect } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setDataProduct } from '~/redux/features/productSlice';
 import Deals from './Deals/Deals';
@@ -9,6 +7,9 @@ import Brands from './Brands/Brands';
 import Category from './Category/Category';
 import Boxers from './Boxers/Boxers';
 import Cta from './Cta/Cta';
+
+const Sliders = React.lazy(() => import('./Sliders/Sliders'));
+const Featured = React.lazy(() => import('./Featured/Featured'));
 
 function Home() {
     const dispatch = useDispatch();
@@ -24,13 +25,21 @@ function Home() {
 
     return (
         <main>
-            <Sliders />
-            <Featured />
-            <Deals />
-            <Brands />
-            <Category />
-            <Boxers />
-            <Cta />
+            <Suspense
+                fallback={
+                    <div className="loading-spinner text-center">
+                        <span className="loader block mt-20"></span>
+                    </div>
+                }
+            >
+                <Sliders />
+                <Featured />
+                <Deals />
+                <Brands />
+                <Category />
+                <Boxers />
+                <Cta />
+            </Suspense>
         </main>
     );
 }

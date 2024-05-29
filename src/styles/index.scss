@@ -191,3 +191,13 @@ html {
         transform: rotate(360deg);
     }
 }
+
+.page-header {
+    background-image: url(/src/assets/images/page-header-bg.jpg);
+    padding: 46px 0 50px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-align: center;
+    background-color: #ebebeb;
+}

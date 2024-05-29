@@ -19,7 +19,7 @@ function ProductItem({ item }) {
                     <FaRegHeart className="w-full" />
                 </span>
 
-                <Link to="" className="block h-[275px] overflow-hidden">
+                <Link to={`/product/${item?.slug}`} className="block h-[275px] overflow-hidden">
                     <img className="w-full h-full object-cover" src={item?.images[0]} alt={item?.title} />
                 </Link>
                 <button className="product absolute bottom-0 left-0 right-0 bg-[#1a1a1a] py-[10px] text-sm capitalize text-white flex items-center justify-center gap-2">
