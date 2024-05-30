@@ -1,10 +1,14 @@
 import Breadcrumb from '~/components/Breadcrumb/Breadcrumb';
 // import ProductContent from './ProductContent/ProductContent';
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 
 const ProductContent = React.lazy(() => import('./ProductContent/ProductContent'));
 
 function Product() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <main>
             <div className="page-header">

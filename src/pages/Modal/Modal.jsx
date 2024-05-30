@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { MdArrowRightAlt } from 'react-icons/md';
 import { MdClose } from 'react-icons/md';
+import ReactDOM from 'react-dom';
 
 function Modal({ toggleModal }) {
     const [currentTab, setCurrentTab] = useState('SignIn');
@@ -9,7 +10,7 @@ function Modal({ toggleModal }) {
         setCurrentTab(tab);
     };
 
-    return (
+    return ReactDOM.createPortal(
         <div
             className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center"
             onClick={toggleModal}
@@ -20,7 +21,7 @@ function Modal({ toggleModal }) {
             >
                 <ul className="text-[#1a1a1a] border-b border-gray flex justify-between">
                     <li
-                        className={`text-[24px] cursor-pointer capitalize p-[10px] w-1/2 text-center border-b border-gray ${
+                        className={`lg:text-[24px] text-[20px] cursor-pointer capitalize p-[10px] w-1/2 text-center border-b border-gray ${
                             currentTab === 'SignIn' ? 'border-primary border-b-[2px] active' : ''
                         }`}
                         onClick={() => handleTabChange('SignIn')}
@@ -28,7 +29,7 @@ function Modal({ toggleModal }) {
                         Sign In
                     </li>
                     <li
-                        className={`text-[24px] cursor-pointer capitalize p-[10px] w-1/2 text-center border-b border-gray ${
+                        className={`lg:text-[24px] text-[20px] cursor-pointer capitalize p-[10px] w-1/2 text-center border-b border-gray ${
                             currentTab === 'Register' ? 'border-primary border-b-[2px] active' : ''
                         }`}
                         onClick={() => handleTabChange('Register')}
@@ -97,7 +98,8 @@ function Modal({ toggleModal }) {
                     <MdClose className="w-5 h-5" />
                 </button>
             </div>
-        </div>
+        </div>,
+        document.body,
     );
 }
 

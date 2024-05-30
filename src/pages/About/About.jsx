@@ -1,5 +1,5 @@
 import Breadcrumb from '~/components/Breadcrumb/Breadcrumb';
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import img1 from '~/assets/images/img-1.jpg';
 import img2 from '~/assets/images/img-2.jpg';
 import img7 from '~/assets/images/7.png';
@@ -10,6 +10,10 @@ import { brands } from '~/constants';
 const Banner = React.lazy(() => import('./Banner/Banner'));
 
 function About() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <main>
             <Breadcrumb>About</Breadcrumb>

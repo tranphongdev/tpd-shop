@@ -17,6 +17,7 @@ function HeaderNav() {
     const products = useSelector((state) => state.dataProduct.products);
     const categorys = products.map((item) => item.category.name);
     const uniqueCategorys = [...new Set(categorys)];
+    const carts = useSelector((state) => state.dataCart.carts);
 
     const activeNavLink = ({ isActive }) => (isActive ? 'active' : '');
 
@@ -98,34 +99,37 @@ function HeaderNav() {
                     <div>
                         <RiShoppingCartLine className="w-6 h-6" />
                     </div>
-                    <span className="text-xs w-5 h-5 bg-primary text-center leading-5 rounded-full text-white">4</span>
+                    <span className="text-xs w-5 h-5 bg-primary text-center leading-5 rounded-full text-white">
+                        {carts.length > 0 ? carts.length : '0'}
+                    </span>
 
                     {/* Dropdown Cart */}
                     <div className="cart-dropdown">
                         {/* Product */}
-                        {/* <div className="flex relative items-center justify-between py-4 pr-6 border-b border-[#ebebeb]">
-                            <div className="max-w-[150px]">
-                                <h4 className="line-clamp-2 font-semibold text-[#666] transition-colors cursor-pointer hover:text-primary text-left mb-1">
-                                    Bluetooth Gaming Corsair Harpoon RGB
-                                </h4>
-                                <div className="flex gap-2 text-[#999] text-sm">
-                                    <span>Qty: 2</span>
-                                    <span>$90</span>
+                        {carts?.map((item, index) => (
+                            <div
+                                key={index}
+                                className="flex relative items-center justify-between py-4 pr-6 border-b border-[#ebebeb]"
+                            >
+                                <div className="max-w-[150px]">
+                                    <h4 className="line-clamp-2 font-semibold text-[#666] transition-colors cursor-pointer hover:text-primary text-left mb-1">
+                                        {item.name}
+                                    </h4>
+                                    <div className="flex gap-2 text-[#999] text-sm">
+                                        <span>Qty: {item.qty}</span>
+                                        <span>${item.price * item.qty}</span>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="w-[60px] h-[60px] cursor-pointer">
-                                <img
-                                    className="w-full h-full object-cover"
-                                    src="https://images.pexels.com/photos/40185/mac-freelancer-macintosh-macbook-40185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                    alt=""
-                                />
-                            </div>
+                                <div className="w-[60px] h-[60px] cursor-pointer">
+                                    <img className="w-full h-full object-cover" src={item.images?.[0]} alt="" />
+                                </div>
 
-                            <button className="absolute top-1/2 -translate-y-1/2 right-[3px]">
-                                <IoMdClose className="w-4 h-4" />
-                            </button>
-                        </div> */}
+                                <button className="absolute top-1/2 -translate-y-1/2 right-[3px]">
+                                    <IoMdClose className="w-4 h-4" />
+                                </button>
+                            </div>
+                        ))}
 
                         {/* Total */}
                         <div className="pr-[22px] pb-[22px]">
@@ -134,19 +138,26 @@ function HeaderNav() {
                                 <span className="text-base font-semibold text-primary">$180</span>
                             </div>
 
-                            {/* <div className="flex justify-between items-center">
-                                <button className="capitalize bg-primary text-white py-2 px-4 min-w-[110px] hover:bg-[#0097e6] transition-colors">
-                                    View cart
+                            {carts.length > 0 ? (
+                                <div className="flex justify-between items-center">
+                                    <Link
+                                        to="/cart"
+                                        className="capitalize bg-primary text-white py-2 px-4 min-w-[110px] hover:bg-[#0097e6] transition-colors"
+                                    >
+                                        View cart
+                                    </Link>
+                                    <Link
+                                        to="/checkout"
+                                        className="capitalize flex items-center gap-2 border border-primary py-2 px-4 min-w-[110px] text-primary hover:bg-primary hover:text-white transition-colors"
+                                    >
+                                        Checkout <MdArrowRightAlt />
+                                    </Link>
+                                </div>
+                            ) : (
+                                <button className="bg-primary min-w-[110px] text-white w-full py-2 hover:bg-[#0064e6] transition-colors">
+                                    <Link to="/product">No product incart shopping now</Link>
                                 </button>
-                                <button className="capitalize flex items-center gap-2 border border-primary py-2 px-4 min-w-[110px] text-primary hover:bg-primary hover:text-white transition-colors">
-                                    Checkout <MdArrowRightAlt />
-                                </button>
-                            </div> */}
-
-                            {/* Product Empty */}
-                            <button className="bg-primary min-w-[110px] text-white w-full py-2 hover:bg-[#0064e6] transition-colors">
-                                No product incart shopping now
-                            </button>
+                            )}
                         </div>
                     </div>
                 </div>
