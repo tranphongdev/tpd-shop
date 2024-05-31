@@ -13,13 +13,13 @@ function Cart() {
             </section>
             <Breadcrumb name="Shopping Cart">Product</Breadcrumb>
 
-            <section className="page-wrapper flex gap-5">
-                <div className="w-[70%]">
+            <section className="page-wrapper flex lg:flex-row flex-col gap-5">
+                <div className="lg:w-[70%] w-full">
                     <table className="w-full">
                         <thead className="border-b border-gray text-[#999]">
                             <tr>
                                 <th className="font-normal py-[14px] text-left text-sm">Product</th>
-                                <th className="font-normal py-[14px] text-left text-sm">Price</th>
+                                <th className="font-normal py-[14px] text-left text-sm lg:pl-0 pl-2">Price</th>
                                 <th className="font-normal py-[14px] text-left text-sm">Quantity</th>
                                 <th className="font-normal py-[14px] text-left text-sm">Total</th>
                                 <th className="font-normal py-[14px] text-left text-sm"></th>
@@ -39,7 +39,7 @@ function Cart() {
                                         16GB/1TB
                                     </p>
                                 </td>
-                                <td className="py-[30px] w-[120px]"> $2.900</td>
+                                <td className="py-[30px] w-[120px] lg:pl-0 pl-2"> $2.900</td>
                                 <td className="py-[30px] w-[135px]">
                                     <div className="flex items-center">
                                         <button className="border border-gray w-10 h-10 hover:text-primary transition-colors">
@@ -63,8 +63,8 @@ function Cart() {
                         </tbody>
                     </table>
                 </div>
-                <div className="w-[30%]">
-                    <div className="py-[25px] px-[30px] border-dashed bg-[#f9f9f9] border-gray border">
+                <div className="lg:w-[30%] w-full">
+                    <div className="py-[25px] mb-[30px] px-[30px] border-dashed bg-[#f9f9f9] border-gray border">
                         <h3 className="pb-[17px] font-medium border-b border-[#ccc]">Cart Total</h3>
                         <div className="h-[70px] border-b border-gray leading-[70px] flex justify-between text-[#1a1a1a]">
                             <span>Subtotal:</span>
@@ -123,14 +123,24 @@ function Cart() {
                                 Change address
                             </Link>
                         </div>
-                        <div className="h-[70px]">
+                        <div className="h-[70px] text-primary flex justify-between items-center">
                             <span>Total:</span>
                             <span>$46.550</span>
                         </div>
-                        <Link to="/checkout">PROCEED TO CHECKOUT</Link>
+                        <div className="text-center">
+                            <Link
+                                to="/checkout"
+                                className="w-full py-[8.5px] px-[15px] hover:text-white hover:bg-primary transition-colors block border border-primary text-primary "
+                            >
+                                PROCEED TO CHECKOUT
+                            </Link>
+                        </div>
                     </div>
 
-                    <Link>
+                    <Link
+                        to="/product"
+                        className="flex hover:text-primary transition-colors items-center w-full justify-center border border-[#d7d7d7] text-[#333] text-sm py-[8.5px] px-[15px] gap-2"
+                    >
                         CONTINUE SHOPPING <RiArrowGoBackLine />
                     </Link>
                 </div>

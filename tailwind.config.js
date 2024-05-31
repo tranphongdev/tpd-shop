@@ -9,6 +9,7 @@ export default {
             black: '#000',
             red: '#d63031',
             gray: '#ebebeb',
+            text: '#1a1a1a',
         },
     },
     plugins: [],
