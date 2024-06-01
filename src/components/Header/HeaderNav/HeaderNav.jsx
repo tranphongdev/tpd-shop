@@ -8,7 +8,8 @@ import { FaFacebook, FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { navLinks } from '~/constants';
 import Logo from '~/assets/images/logo.svg';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { delCart } from '~/redux/features/cartSlice';
 
 function HeaderNav() {
     const [isSticky, setIsSticky] = useState(false);
@@ -18,6 +19,20 @@ function HeaderNav() {
     const categorys = products.map((item) => item.category.name);
     const uniqueCategorys = [...new Set(categorys)];
     const carts = useSelector((state) => state.dataCart.carts);
+    const [subtotal, setSubTotal] = useState(0);
+    const dispatch = useDispatch();
+
+    const caculateSubTotal = () => {
+        let total = 0;
+        carts.forEach((item) => {
+            total += item.price * item.qty;
+        });
+        setSubTotal(total);
+    };
+
+    useEffect(() => {
+        caculateSubTotal();
+    }, [carts]);
 
     const activeNavLink = ({ isActive }) => (isActive ? 'active' : '');
 
@@ -125,7 +140,10 @@ function HeaderNav() {
                                     <img className="w-full h-full object-cover" src={item.images?.[0]} alt="" />
                                 </div>
 
-                                <button className="absolute top-1/2 -translate-y-1/2 right-[3px]">
+                                <button
+                                    onClick={() => dispatch(delCart(item?.id))}
+                                    className="absolute top-1/2 -translate-y-1/2 right-[3px]"
+                                >
                                     <IoMdClose className="w-4 h-4" />
                                 </button>
                             </div>
@@ -135,7 +153,7 @@ function HeaderNav() {
                         <div className="pr-[22px] pb-[22px]">
                             <div className="pt-[10px] pb-[5px] mb-[11px] flex justify-between items-center">
                                 <span className="uppercase text-sm font-semibold text-[#666]">Total</span>
-                                <span className="text-base font-semibold text-primary">$180</span>
+                                <span className="text-base font-semibold text-primary">${subtotal}</span>
                             </div>
 
                             {carts.length > 0 ? (

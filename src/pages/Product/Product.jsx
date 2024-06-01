@@ -1,5 +1,4 @@
 import Breadcrumb from '~/components/Breadcrumb/Breadcrumb';
-// import ProductContent from './ProductContent/ProductContent';
 import React, { Suspense, useEffect } from 'react';
 
 const ProductContent = React.lazy(() => import('./ProductContent/ProductContent'));

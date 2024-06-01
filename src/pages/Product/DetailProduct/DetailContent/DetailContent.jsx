@@ -7,23 +7,30 @@ import { useState } from 'react';
 
 import Modal from '~/pages/Modal/Modal';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '~/redux/features/cartSlice';
+import { addToCartQty } from '~/redux/features/cartSlice';
 import { toast } from 'react-toastify';
 
 function DetailContent({ data }) {
     const dispatch = useDispatch();
     const [modal, setModal] = useState(false);
+    const [value, setValue] = useState(1);
     const [selectedImg, setSelectedImg] = useState(data?.images?.[0]);
 
     const toggleModal = () => {
         setModal(!modal);
     };
 
-    const user = false;
+    const handleDelete = () => {
+        if (value > 1) {
+            setValue(value - 1);
+        }
+    };
+
+    const user = true;
     const handleAddToCart = (item) => {
         if (user) {
-            dispatch(addToCart(item));
-            toast.success('Product added cart successfully!');
+            dispatch(addToCartQty({ ...item, qty: value }));
+            toast.success('Product added to cart successfully!');
         } else {
             setModal(true);
         }
@@ -50,6 +57,7 @@ function DetailContent({ data }) {
                         </div>
                         <div className="w-4/5">
                             <img
+                                loading="lazy"
                                 src={selectedImg ? selectedImg : data?.images?.[0]}
                                 alt={data?.name}
                                 className="w-[457.188px] h-[457.188px] object-cover"
@@ -73,13 +81,19 @@ function DetailContent({ data }) {
                         <div className="flex items-center gap-4 mb-5">
                             <span className="text-sm">Qty:</span>
                             <div className="flex items-center">
-                                <button className="border border-gray w-10 h-10 mx-auto transition-colors hover:text-primary">
+                                <button
+                                    onClick={() => setValue((prev) => prev + 1)}
+                                    className="border border-gray w-10 h-10 mx-auto transition-colors hover:text-primary"
+                                >
                                     <GoPlus className="w-full" />
                                 </button>
                                 <span className="border-y border-gray block w-10 h-10 text-center leading-10 text-sm">
-                                    1
+                                    {value}
                                 </span>
-                                <button className="border border-gray w-10 h-10 transition-colors hover:text-primary">
+                                <button
+                                    onClick={() => handleDelete()}
+                                    className="border border-gray w-10 h-10 transition-colors hover:text-primary"
+                                >
                                     <HiOutlineMinusSmall className="w-full" />
                                 </button>
                             </div>

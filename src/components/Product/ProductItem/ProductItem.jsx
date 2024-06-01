@@ -44,7 +44,12 @@ function ProductItem({ item }) {
                     </span>
 
                     <Link to={`/product/${item?.slug}`} className="block h-[275px] overflow-hidden">
-                        <img className="w-full h-full object-cover" src={item?.images[0]} alt={item?.title} />
+                        <img
+                            loading="lazy"
+                            className="w-full h-full object-cover"
+                            src={item?.images[0]}
+                            alt={item?.title}
+                        />
                     </Link>
                     <button
                         onClick={() => handleAddToCart(item)}

@@ -1,6 +1,26 @@
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import Breadcrumb from '~/components/Breadcrumb/Breadcrumb';
 
 function Checkout() {
+    const carts = useSelector((state) => state.dataCart.carts);
+    const [subTotal, setSubTotal] = useState(0);
+    const location = useLocation();
+    const { total, shippingOption } = location.state || { total: 0, shippingOption: '' };
+
+    const caculateSubTotal = () => {
+        let total = 0;
+        carts.forEach((item) => {
+            total += item.price * item.qty;
+        });
+        setSubTotal(total);
+    };
+
+    useEffect(() => {
+        caculateSubTotal();
+    }, [carts]);
+
     return (
         <main>
             <section className="page-header">
@@ -121,32 +141,41 @@ function Checkout() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className="h-[70px] border-b border-gray text-[#777] font-light">
-                                    <td className="text-sm">
-                                        <p>MacBook Pro 16 inch M2 Pro 2023 - 16GB/1TB x 7</p>
-                                    </td>
-                                    <td className="text-sm min-w-[100px] text-right">$20.300</td>
-                                </tr>
+                                {carts?.map((item, index) => (
+                                    <tr key={index} className="h-[70px] border-b border-gray text-[#777] font-light">
+                                        <td className="text-sm">
+                                            <p>
+                                                {item?.name} x {item?.qty}
+                                            </p>
+                                        </td>
+                                        <td className="text-sm min-w-[100px] text-right">${item?.price * item?.qty}</td>
+                                    </tr>
+                                ))}
+
                                 <tr className="h-[70px] border-b border-gray text-[#777] font-light">
                                     <td className="text-base text-text font-normal">
                                         <p>Subtotal:</p>
                                     </td>
                                     <td className="text-base text-text font-normal text-right">
-                                        <p>$20.450</p>
+                                        <p>${subTotal}</p>
                                     </td>
                                 </tr>
                                 <tr className="h-[70px] border-b border-gray text-[#777] font-light">
                                     <td className="text-sm">
                                         <p>Shipping:</p>
                                     </td>
-                                    <td className="text-sm min-w-[100px] text-right">Express</td>
+                                    <td className="text-sm min-w-[100px] text-right">
+                                        {(shippingOption == 0 && 'Free Ship') ||
+                                            (shippingOption === 10 && 'Standard') ||
+                                            (shippingOption === 20 && 'Express')}
+                                    </td>
                                 </tr>
                                 <tr className="h-[70px]  font-light">
-                                    <td className="text-base text-text font-normal text-primary">
+                                    <td className="text-base font-normal">
                                         <p className="text-primary">Total:</p>
                                     </td>
-                                    <td className="text-base text-text font-normal text-right text-primary">
-                                        <p className="text-primary">$20.450</p>
+                                    <td className="text-base font-normal text-right">
+                                        <p className="text-primary">${total}</p>
                                     </td>
                                 </tr>
                             </tbody>

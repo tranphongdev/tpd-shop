@@ -18,7 +18,7 @@ function DetailProduct() {
         if (slug) {
             getDataDetail();
         }
-    }, [slug]);
+    }, []);
 
     return (
         <main>
