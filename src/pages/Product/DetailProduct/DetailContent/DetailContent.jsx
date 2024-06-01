@@ -9,6 +9,7 @@ import Modal from '~/pages/Modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCartQty } from '~/redux/features/cartSlice';
 import { toast } from 'react-toastify';
+import { addToWishList } from '~/redux/features/wishlistSlice';
 
 function DetailContent({ data }) {
     const dispatch = useDispatch();
