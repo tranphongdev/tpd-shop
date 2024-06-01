@@ -50,9 +50,11 @@ html {
     transition: all 0.25s;
 }
 
-.cart-menu:hover .cart-dropdown {
-    visibility: visible;
-    opacity: 1;
+.cart-menu:hover {
+    .cart-dropdown {
+        visibility: visible;
+        opacity: 1;
+    }
 }
 
 .sticky-header {
@@ -203,7 +205,7 @@ html {
 }
 
 .top-submenu {
-    display: block;
+    visibility: hidden;
     opacity: 0;
     text-transform: capitalize;
     min-width: 180px;
@@ -215,7 +217,7 @@ html {
 
 .top-menu:hover {
     .top-submenu {
-        display: block;
+        visibility: visible;
         opacity: 1;
     }
 }

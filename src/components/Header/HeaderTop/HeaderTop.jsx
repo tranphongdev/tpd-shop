@@ -45,7 +45,10 @@ function HeaderTop() {
                                 <IoChevronDownSharp className="w-4 h-4 mt-1" />
                             </div>
                             <div className="absolute top-submenu bg-white shadow-sm z-10 pb-[6px] text-sm pt-4 right-0">
-                                <Link className="py-[6px] px-[15px] hover:text-primary transition-colors">
+                                <Link
+                                    to="/dashboard"
+                                    className="py-[6px] px-[15px] hover:text-primary transition-colors"
+                                >
                                     Account Details
                                 </Link>
                                 <Link className="block py-[6px] px-[15px] hover:text-primary transition-colors">

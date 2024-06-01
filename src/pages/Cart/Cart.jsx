@@ -177,7 +177,7 @@ function Cart() {
                         </div>
                         <div className="pt-[14px] pb-[23px] border-b border-gray">
                             <h3 className="pb-2">Estimate for Your Country</h3>
-                            <Link to="/" className="text-sm text-[#999] border-b">
+                            <Link to="/dashboard" className="text-sm text-[#999] border-b">
                                 Change address
                             </Link>
                         </div>

@@ -10,6 +10,11 @@ const Product = React.lazy(() => import('./pages/Product/Product'));
 const Detail = React.lazy(() => import('./pages/Product/DetailProduct/DetailProduct'));
 const Cart = React.lazy(() => import('./pages/Cart/Cart'));
 const Checkout = React.lazy(() => import('./pages/Checkout/Checkout'));
+const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard'));
+const Addresses = React.lazy(() => import('./pages/Dashboard/Adresses/Adresses'));
+const Wishlist = React.lazy(() => import('./pages/Dashboard/Wishlist/Wishlist'));
+const Orders = React.lazy(() => import('./pages/Dashboard/Orders/Orders'));
+const Account = React.lazy(() => import('./pages/Dashboard/Account/Account'));
 
 function App() {
     return (
@@ -28,7 +33,13 @@ function App() {
                         <Route path="/cart" element={<Cart />} />
                         <Route path="/product" element={<Product />} />
                         <Route path="/product/:slug" element={<Detail />} />
-                        <Route path="/checkout/" element={<Checkout />} />
+                        <Route path="/checkout" element={<Checkout />} />
+                        <Route path="/dashboard" element={<Dashboard />}>
+                            <Route path="/dashboard" element={<Account />} />
+                            <Route path="/dashboard/orders" element={<Orders />} />
+                            <Route path="/dashboard/adresses" element={<Addresses />} />
+                            <Route path="/dashboard/wishlist" element={<Wishlist />} />
+                        </Route>
                     </Route>
                 </Routes>
             </Suspense>
