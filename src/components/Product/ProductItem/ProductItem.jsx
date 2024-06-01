@@ -2,14 +2,14 @@ import { Link } from 'react-router-dom';
 import Rating from '~/components/Rating/Rating';
 import { MdAddShoppingCart } from 'react-icons/md';
 import { FaRegHeart } from 'react-icons/fa6';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '~/redux/features/cartSlice';
 import { toast } from 'react-toastify';
 import Modal from '~/pages/Modal/Modal';
 import { useState } from 'react';
 
 function ProductItem({ item }) {
-    const user = true;
+    const user = useSelector((state) => state.authenSlice.isLogin);
     const [modal, setModal] = useState(false);
     const dispatch = useDispatch();
 

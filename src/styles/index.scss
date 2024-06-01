@@ -201,3 +201,21 @@ html {
     text-align: center;
     background-color: #ebebeb;
 }
+
+.top-submenu {
+    display: block;
+    opacity: 0;
+    text-transform: capitalize;
+    min-width: 180px;
+    top: 100%;
+    background-color: #fff;
+    box-shadow: 2px 5px 8px rgba(51, 51, 51, 0.05), -2px 5px 8px rgba(51, 51, 51, 0.05);
+    transition: opacity ease 0.3s;
+}
+
+.top-menu:hover {
+    .top-submenu {
+        display: block;
+        opacity: 1;
+    }
+}

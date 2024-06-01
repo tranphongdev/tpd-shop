@@ -6,7 +6,7 @@ import { FaFacebook, FaTwitter, FaRegHeart, FaYoutube, FaPinterest } from 'react
 import { useState } from 'react';
 
 import Modal from '~/pages/Modal/Modal';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCartQty } from '~/redux/features/cartSlice';
 import { toast } from 'react-toastify';
 
@@ -26,7 +26,7 @@ function DetailContent({ data }) {
         }
     };
 
-    const user = true;
+    const user = useSelector((state) => state.authenSlice.isLogin);
     const handleAddToCart = (item) => {
         if (user) {
             dispatch(addToCartQty({ ...item, qty: value }));

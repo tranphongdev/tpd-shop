@@ -1,8 +1,28 @@
 import bg from '~/assets/images/bg-2.jpg';
 import { FaTwitter, FaYoutube, FaFacebookF, FaPinterest, FaLinkedin } from 'react-icons/fa';
 import { MdArrowRightAlt } from 'react-icons/md';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 function Cta() {
+    const [email, setEmail] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (!email.trim()) {
+            toast.error('Email cannot be empty.');
+            return;
+        }
+        if (!/\S+@\S+\.\S+/.test(email)) {
+            toast.error('Invalid email format.');
+            return;
+        }
+
+        toast.success('Order successfully placed');
+        setEmail('');
+    };
+
     return (
         <section className="page-wrapper">
             <div className="relative w-full h-[500px] lg:h-fit">
@@ -28,16 +48,23 @@ function Cta() {
                             <p className="text-[#999] font-light mb-5">
                                 and <br /> receive <span className="text-primary">$20 coupon</span> for first shopping
                             </p>
-                            <div className="flex">
-                                <input
-                                    type="text"
-                                    className="border focus:border-primary transition-colors rounded-l-3xl outline-none text-sm font-light border-[#ebebeb] py-3 px-5 w-full"
-                                    placeholder="Enter your Email Address"
-                                />
-                                <button className="p-3 rounded-r-3xl px-5 bg-primary text-white text-xl">
-                                    <MdArrowRightAlt />
-                                </button>
-                            </div>
+                            <form onSubmit={handleSubmit}>
+                                <div className="flex">
+                                    <input
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        type="text"
+                                        className="border focus:border-primary transition-colors rounded-l-3xl outline-none text-sm font-light border-[#ebebeb] py-3 px-5 w-full"
+                                        placeholder="Enter your Email Address"
+                                    />
+                                    <button
+                                        type="submit"
+                                        className="p-3 rounded-r-3xl px-5 bg-primary text-white text-xl"
+                                    >
+                                        <MdArrowRightAlt />
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
