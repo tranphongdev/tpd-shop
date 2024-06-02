@@ -13,7 +13,7 @@ function OurStore() {
         <section className="page-wrapper">
             <h3 className="text-[28px] font-semibold mb-[30px] text-center">Our Stores</h3>
             <div className="flex lg:flex-row flex-col gap-5 mb-[50px]">
-                <div className="flex gap-5">
+                <div className="flex gap-5 lg:flex-row flex-col">
                     <img src={imgContact1} alt="" />
                     <div>
                         <h4 className="font-normal mb-2">Wall Street Plaza</h4>
@@ -28,7 +28,7 @@ function OurStore() {
                         </Link>
                     </div>
                 </div>
-                <div className="flex gap-5">
+                <div className="flex gap-5 lg:flex-row flex-col">
                     <img src={imgContact2} alt="imgContact2" />
                     <div>
                         <h4 className="font-normal mb-2">One New York Plaza</h4>

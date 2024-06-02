@@ -1,8 +1,7 @@
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-// import required modules
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
@@ -31,7 +30,7 @@ function Sliders() {
                     >
                         {sliders.map((slider) => (
                             <SwiperSlide key={slider?.id} className="relative ">
-                                <img src={slider?.image} className="w-full" alt={slider.title} />
+                                <img loading="lazy" src={slider?.image} className="w-full" alt={slider.title} />
                                 <div className="absolute top-1/2 -translate-y-1/2 lg:left-[70px] left-10 w-full">
                                     <h3 className="lg:text-xl text-sm text-primary lg:mb-1">{slider?.subtitle}</h3>
                                     <h1 className="lg:text-5xl text-3xl font-bold text-[#333] lg:mb-2">
@@ -58,7 +57,12 @@ function Sliders() {
                 <div className="lg:w-1/3 w-full gap-5 flex flex-col justify-between">
                     {banners?.map((banner, index) => (
                         <div key={index} className="relative">
-                            <img src={banner?.image} alt={banner?.title} className="w-full object-cover" />
+                            <img
+                                loading="lazy"
+                                src={banner?.image}
+                                alt={banner?.title}
+                                className="w-full object-cover"
+                            />
                             <div className="absolute top-1/2 left-5 -translate-y-1/2 text-lg flex flex-col hover:text-primary transition-colors">
                                 <a href="#" className="font-semibold ml-2 mb-2">
                                     {banner?.title} <br /> {banner?.title1}

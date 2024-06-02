@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
-import Breadcrumb from '~/components/Breadcrumb/Breadcrumb';
 
+const Breadcrumb = React.lazy(() => import('~/components/Breadcrumb/Breadcrumb'));
 const Banner = React.lazy(() => import('./Banner/Banner'));
 const ContactForm = React.lazy(() => import('./ContactForm/ContactForm'));
 const OurStore = React.lazy(() => import('./OurStore/OurStore'));
