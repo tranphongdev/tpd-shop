@@ -8,6 +8,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 import { banners, sliders } from '~/constants';
 import { MdOutlineArrowRightAlt } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 function Sliders() {
     return (
@@ -43,9 +44,11 @@ function Sliders() {
                                         </span>
                                         <sup className="lg:text-xl text-sm text-primary">{slider?.priceSub}</sup>
                                     </div>
-                                    <button className="flex items-center bg-primary text-white gap-2 lg:py-3 py-[6.5px] px-[10px] lg:px-4 min-w-[90px] text-xs lg:text-base lg:min-w-[170px] justify-center rounded-3xl">
-                                        Click here <MdOutlineArrowRightAlt />
-                                    </button>
+                                    <Link to="/product">
+                                        <button className="flex items-center bg-primary text-white gap-2 lg:py-3 py-[6.5px] px-[10px] lg:px-4 min-w-[90px] text-xs lg:text-base lg:min-w-[170px] justify-center rounded-3xl">
+                                            Click here <MdOutlineArrowRightAlt />
+                                        </button>
+                                    </Link>
                                 </div>
                             </SwiperSlide>
                         ))}
@@ -60,9 +63,11 @@ function Sliders() {
                                 <a href="#" className="font-semibold ml-2 mb-2">
                                     {banner?.title} <br /> {banner?.title1}
                                 </a>
-                                <button className="flex items-center justify-start w-fit transition-colors gap-2 text-primary text-sm px-[10px] py-1 hover:bg-primary hover:text-white rounded-[20px]">
-                                    Shop now <MdOutlineArrowRightAlt />
-                                </button>
+                                <Link to="/product">
+                                    <button className="flex items-center justify-start w-fit transition-colors gap-2 text-primary text-sm px-[10px] py-1 hover:bg-primary hover:text-white rounded-[20px]">
+                                        Shop now <MdOutlineArrowRightAlt />
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                     ))}

@@ -9,6 +9,8 @@ function Account() {
                         Full Name*
                     </label>
                     <input
+                        readOnly
+                        value={localStorage.getItem('username')}
                         type="text"
                         className="bg-[#f9f9f9] mb-5 w-full focus:border-primary focus:bg-white transition-colors outline-none border border-gray py-[8.5px] px-3 text-sm text-[#777]"
                     />

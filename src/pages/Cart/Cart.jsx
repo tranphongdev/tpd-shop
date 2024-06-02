@@ -39,13 +39,13 @@ function Cart() {
     };
 
     const handleShippingChange = (option) => {
-        setShippingOption(option);
+        setShippingCost(option);
         // Đặt chi phí vận chuyển dựa trên tùy chọn đã chọn
         let cost = 0;
         if (option === 'free') cost = 0;
         else if (option === 'stand') cost = 10;
         else if (option === 'express') cost = 20;
-        setShippingCost(cost);
+        setShippingOption(cost);
     };
 
     const handleCheckout = () => {

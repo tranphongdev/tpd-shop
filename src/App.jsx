@@ -15,6 +15,7 @@ const Addresses = React.lazy(() => import('./pages/Dashboard/Adresses/Adresses')
 const Wishlist = React.lazy(() => import('./pages/Dashboard/Wishlist/Wishlist'));
 const Orders = React.lazy(() => import('./pages/Dashboard/Orders/Orders'));
 const Account = React.lazy(() => import('./pages/Dashboard/Account/Account'));
+const Contact = React.lazy(() => import('./pages/Contact/Contact'));
 
 function App() {
     return (
@@ -34,6 +35,7 @@ function App() {
                         <Route path="/product" element={<Product />} />
                         <Route path="/product/:slug" element={<Detail />} />
                         <Route path="/checkout" element={<Checkout />} />
+                        <Route path="/contact" element={<Contact />} />
                         <Route path="/dashboard" element={<Dashboard />}>
                             <Route path="/dashboard" element={<Account />} />
                             <Route path="/dashboard/orders" element={<Orders />} />
