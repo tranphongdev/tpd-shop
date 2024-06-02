@@ -56,4 +56,47 @@ const brands = [
     { id: 6, image: brand6, title: 'brand6' },
 ];
 
-export { navLinks, sliders, banners, brands };
+const blogs = [
+    {
+        id: '6489d282de52a05c3466c8d3',
+        name: 'Aenean dignissim pellente squefelis viverra, tortor libero sodales leo',
+        slug: 'aenean-dignissim-pellente-squefelis-viverra-tortor-libero-sodales-leo-1701079023366',
+        author: 'Tran Phong Dev',
+        category: 'Fashion',
+        createdAt: '2024-06-14',
+        updatedAt: '2023-11-27T09:57:03.367Z',
+        image: 'https://cfdshop.hn.ss.bfcplatform.vn/images/blog/twWE1fUxtMTZbVnmRXCKy-fotis-fotopoulos-LJ9KY8pIH3E-unsplash.jpg',
+    },
+    {
+        id: '6489d282de52a05c3466c8d4',
+        name: ' Vestibulum volutpat, lacus a ultrices sagittis utaliquam sollicitudin leo.',
+        slug: 'vestibulum-volutpat-lacus-a-ultrices-sagittis-utaliquam-sollicitudin-leo-1701079104035',
+        author: 'Tran Phong Dev',
+        category: 'Shopping',
+        createdAt: '2024-06-14',
+        updatedAt: '2023-11-27T09:57:03.367Z',
+        image: 'https://cfdshop.hn.ss.bfcplatform.vn/images/blog/i1hC6_3aspDxuriq2Y5A1-carl-heyerdahl-KE0nC8-58MQ-unsplash.jpg',
+    },
+    {
+        id: '6489d282de52a05c3466c8d5',
+        name: 'Suspendisse potenti aed egestas, ante et vulputate',
+        slug: 'suspendisse-potenti-aed-egestas-ante-et-vulputate-1701081016109',
+        author: 'Tran Phong Dev',
+        category: 'Travel',
+        createdAt: '2024-06-14',
+        updatedAt: '2023-11-27T09:57:03.367Z',
+        image: 'https://cfdshop.hn.ss.bfcplatform.vn/images/blog/EHV03GR2MjxPf78sA7qZt-luke-chesser-A5-Xr7WyktQ-unsplash.jpg',
+    },
+    {
+        id: '64888a53ef6cc923b03f39c2',
+        name: 'Tristique elit cras ornare raesent elementum tortor',
+        slug: 'suspendisse-potenti-aed-egestas-ante-et-vulputate-1701081016109',
+        author: 'Tran Phong Dev',
+        category: 'Hobbies',
+        createdAt: '2024-06-14',
+        updatedAt: '2023-11-27T09:57:03.367Z',
+        image: 'https://cfdshop.hn.ss.bfcplatform.vn/images/blog/ZIdshLhRy0nMSXVwWSn40-christina-wocintechchat-com-glRqyWJgUeY-unsplash.jpg',
+    },
+];
+
+export { navLinks, sliders, banners, brands, blogs };
