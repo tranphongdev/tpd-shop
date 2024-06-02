@@ -7,11 +7,12 @@ import { addToCart } from '~/redux/features/cartSlice';
 import { toast } from 'react-toastify';
 import Modal from '~/pages/Modal/Modal';
 import { useState } from 'react';
+import { addToWishList } from '~/redux/features/wishlistSlice';
 
 function ProductItem({ item }) {
+    const dispatch = useDispatch();
     const user = useSelector((state) => state.authenSlice.isLogin);
     const [modal, setModal] = useState(false);
-    const dispatch = useDispatch();
 
     const toggleModal = () => {
         setModal(!modal);
@@ -20,10 +21,14 @@ function ProductItem({ item }) {
     const handleAddToCart = (item) => {
         if (user) {
             dispatch(addToCart(item));
-            toast.success('Product added cart successfully!');
+            toast.success('Added cart successfully!');
         } else {
             setModal(true);
         }
+    };
+
+    const handleAddWishList = (item) => {
+        dispatch(addToWishList(item));
     };
 
     return (
@@ -39,7 +44,10 @@ function ProductItem({ item }) {
                         ''
                     )}
 
-                    <span className="heart absolute top-5 w-[30px] h-[30px] flex justify-center-center items-center rounded-full text-white bg-primary right-5">
+                    <span
+                        onClick={() => handleAddWishList(item)}
+                        className="heart absolute top-5 w-[30px] h-[30px] flex justify-center-center items-center rounded-full text-white bg-primary right-5"
+                    >
                         <FaRegHeart className="w-full" />
                     </span>
 

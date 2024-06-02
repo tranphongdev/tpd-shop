@@ -1,18 +1,19 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { FiUser, FiPhone } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import Modal from '~/pages/Modal/Modal';
-import { doLogout } from '~/redux/features/authSlice';
-import { Link } from 'react-router-dom';
 import { IoChevronDownSharp } from 'react-icons/io5';
 
+import Modal from '~/pages/Modal/Modal';
+import { doLogout } from '~/redux/features/authSlice';
+
 function HeaderTop() {
+    const dispatch = useDispatch();
+    const [modal, setModal] = useState(false);
     const isLogin = useSelector((state) => state.authenSlice.isLogin);
     const username = useSelector((state) => state.authenSlice.username);
     const wishlist = useSelector((state) => state.dataWishList.wishlist);
-    const [modal, setModal] = useState(false);
-    const dispatch = useDispatch();
 
     const toggleModal = () => {
         setModal(!modal);
@@ -36,7 +37,7 @@ function HeaderTop() {
                             <button onClick={toggleModal} className="flex items-center gap-1">
                                 <FiUser /> Login
                             </button>
-                            <button> | Resgister</button>
+                            <button onClick={toggleModal}> | Resgister</button>
                         </div>
                     ) : (
                         <div className="relative top-menu">

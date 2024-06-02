@@ -13,6 +13,7 @@ import { addToWishList } from '~/redux/features/wishlistSlice';
 
 function DetailContent({ data }) {
     const dispatch = useDispatch();
+    const user = useSelector((state) => state.authenSlice.isLogin);
     const [modal, setModal] = useState(false);
     const [value, setValue] = useState(1);
     const [selectedImg, setSelectedImg] = useState(data?.images?.[0]);
@@ -31,11 +32,10 @@ function DetailContent({ data }) {
         dispatch(addToWishList(item));
     };
 
-    const user = useSelector((state) => state.authenSlice.isLogin);
     const handleAddToCart = (item) => {
         if (user) {
             dispatch(addToCartQty({ ...item, qty: value }));
-            toast.success('Product added to cart successfully!');
+            toast.success('Added to cart successfully!');
         } else {
             setModal(true);
         }

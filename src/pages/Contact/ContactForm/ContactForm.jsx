@@ -29,7 +29,7 @@ function ContactForm() {
         setErrors(validationErrors);
 
         if (Object.keys(validationErrors).length === 0) {
-            toast.success('Send success!');
+            toast.success('Send successfuly!');
             setFormData({
                 name: '',
                 email: '',
@@ -38,7 +38,7 @@ function ContactForm() {
                 message: '',
             });
         } else {
-            toast.error('Form không hợp lệ!');
+            toast.error('Form not empty!');
         }
     };
 

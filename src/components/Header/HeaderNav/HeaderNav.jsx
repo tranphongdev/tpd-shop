@@ -1,26 +1,29 @@
-import { FaBars } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
+
+import { FaBars } from 'react-icons/fa';
 import { RiShoppingCartLine } from 'react-icons/ri';
 import { IoMdClose } from 'react-icons/io';
 import { MdArrowRightAlt } from 'react-icons/md';
 import { FaFacebook, FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa';
 
-import { navLinks } from '~/constants';
 import Logo from '~/assets/images/logo.svg';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { navLinks } from '~/constants';
 import { delCart } from '~/redux/features/cartSlice';
 
 function HeaderNav() {
+    const dispatch = useDispatch();
+
+    const [subtotal, setSubTotal] = useState(0);
     const [isSticky, setIsSticky] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [showTabContent, setShowTabContent] = useState(true);
+
+    const carts = useSelector((state) => state.dataCart.carts);
     const products = useSelector((state) => state.dataProduct.products);
     const categorys = products.map((item) => item.category.name);
     const uniqueCategorys = [...new Set(categorys)];
-    const carts = useSelector((state) => state.dataCart.carts);
-    const [subtotal, setSubTotal] = useState(0);
-    const dispatch = useDispatch();
 
     const caculateSubTotal = () => {
         let total = 0;

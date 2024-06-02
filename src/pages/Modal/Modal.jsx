@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
-import { MdArrowRightAlt, MdClose } from 'react-icons/md';
 import ReactDOM from 'react-dom';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { MdArrowRightAlt, MdClose } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { doLogin } from '~/redux/features/authSlice';
 
 function Modal({ toggleModal }) {
-    const [currentTab, setCurrentTab] = useState('SignIn');
     const dispatch = useDispatch();
     const isLogin = useSelector((state) => state.authenSlice.isLogin);
+    const [currentTab, setCurrentTab] = useState('SignIn');
     const [formLogin, setFormLogin] = useState({ username: '', password: '' });
     const [isSuccess, setIsSuccess] = useState(false);
 
@@ -31,6 +33,10 @@ function Modal({ toggleModal }) {
 
     const handleSubmit = () => {
         dispatch(doLogin(formLogin));
+    };
+
+    const handleRegister = () => {
+        toast.warning('Chức năng đang hoàn thiện');
     };
 
     return (
@@ -67,7 +73,7 @@ function Modal({ toggleModal }) {
                             <div>
                                 <div className="mb-3">
                                     <label className="block text-sm text-[#666] font-light mb-1" htmlFor="">
-                                        Username or email address*
+                                        Username or email address*(Test: tranphongdev)
                                     </label>
                                     <input
                                         name="username"
@@ -78,7 +84,7 @@ function Modal({ toggleModal }) {
                                 </div>
                                 <div className="mb-3">
                                     <label className="block text-sm text-[#666] font-light mb-1" htmlFor="">
-                                        Password*
+                                        Password*(Test: 123456)
                                     </label>
                                     <input
                                         name="password"
@@ -118,7 +124,10 @@ function Modal({ toggleModal }) {
                                     />
                                 </div>
                                 <div className="pt-[6px] pb-[30px] border-b border-gray">
-                                    <button className="border flex items-center gap-2 font-light hover:bg-primary hover:text-white transition-colors text-primary min-w-[115px] justify-center text-sm border-primary uppercase py-[8.5px] px-[15px]">
+                                    <button
+                                        onClick={() => handleRegister()}
+                                        className="border flex items-center gap-2 font-light hover:bg-primary hover:text-white transition-colors text-primary min-w-[115px] justify-center text-sm border-primary uppercase py-[8.5px] px-[15px]"
+                                    >
                                         Sign Up <MdArrowRightAlt />
                                     </button>
                                 </div>
