@@ -10,6 +10,7 @@ import { IoChevronDownSharp } from 'react-icons/io5';
 function HeaderTop() {
     const isLogin = useSelector((state) => state.authenSlice.isLogin);
     const username = useSelector((state) => state.authenSlice.username);
+    const wishlist = useSelector((state) => state.dataWishList.wishlist);
     const [modal, setModal] = useState(false);
     const dispatch = useDispatch();
 
@@ -47,15 +48,21 @@ function HeaderTop() {
                             <div className="absolute top-submenu bg-white shadow-sm z-10 pb-[6px] text-sm pt-4 right-0">
                                 <Link
                                     to="/dashboard"
-                                    className="py-[6px] px-[15px] hover:text-primary transition-colors"
+                                    className="py-[8px] px-[15px] hover:text-primary transition-colors"
                                 >
                                     Account Details
                                 </Link>
-                                <Link className="block py-[6px] px-[15px] hover:text-primary transition-colors">
+                                <Link
+                                    to="/dashboard/orders"
+                                    className="block py-[6px] px-[15px] hover:text-primary transition-colors"
+                                >
                                     Your Orders
                                 </Link>
-                                <Link className="block py-[6px] px-[15px] hover:text-primary transition-colors">
-                                    Wishlist <span className="text-primary">(1)</span>
+                                <Link
+                                    to="/dashboard/wishlist"
+                                    className="block py-[6px] px-[15px] hover:text-primary transition-colors"
+                                >
+                                    Wishlist <span className="text-primary">({wishlist?.length})</span>
                                 </Link>
                                 <button
                                     onClick={() => handleLogout()}

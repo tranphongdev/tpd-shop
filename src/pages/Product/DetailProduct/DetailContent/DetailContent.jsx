@@ -27,6 +27,10 @@ function DetailContent({ data }) {
         }
     };
 
+    const handleAddWishList = (item) => {
+        dispatch(addToWishList(item));
+    };
+
     const user = useSelector((state) => state.authenSlice.isLogin);
     const handleAddToCart = (item) => {
         if (user) {
@@ -107,7 +111,10 @@ function DetailContent({ data }) {
                             >
                                 <MdAddShoppingCart /> Add to cart
                             </button>
-                            <button className="flex items-center gap-2 font-light hover:text-primary justify-center capitalize hover:border hover:border-primary py-[10px] px-[15px] text-[16px] min-w-[198px] border-white border transition-colors">
+                            <button
+                                onClick={() => handleAddWishList(data)}
+                                className="flex items-center gap-2 font-light hover:text-primary justify-center capitalize hover:border hover:border-primary py-[10px] px-[15px] text-[16px] min-w-[198px] border-white border transition-colors"
+                            >
                                 <FaRegHeart /> add to wishlist
                             </button>
                         </div>

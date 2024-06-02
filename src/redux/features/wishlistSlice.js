@@ -10,19 +10,21 @@ export const wishlistSlice = createSlice({
     initialState,
     reducers: {
         addToWishList: (state, action) => {
-            const itemIndex = state.wishlist.findIndex((item) => item.id === action.payload.id);
+            const itemIndex = state.wishlist.find((item) => item.id === action.payload.id);
 
-            if (itemIndex > 0) {
-                toast.error('Sản phẩm đã tồn tại!');
+            if (!itemIndex) {
+                state.wishlist.push(action.payload);
+                toast.success('Add wishlist success!');
             } else {
-                return {
-                    ...state,
-                    wishlist: action.payload,
-                };
+                toast.error('Sản phẩm này đã thêm rồi!');
             }
+        },
+        deleteWishList: (state, action) => {
+            state.wishlist = state.wishlist.filter((item) => item.id !== action.payload.id);
         },
     },
 });
 
-export const { addToWishList } = wishlistSlice.actions;
+export const { addToWishList, deleteWishList } = wishlistSlice.actions;
+
 export default wishlistSlice.reducer;
