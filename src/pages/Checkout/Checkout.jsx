@@ -1,15 +1,39 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import Breadcrumb from '~/components/Breadcrumb/Breadcrumb';
+import { delAllCart } from '~/redux/features/cartSlice';
+import { generateRandomID } from '~/utils/randomId';
+import { validateForm } from '~/utils/rules';
 
 function Checkout() {
+    const dipatch = useDispatch();
+    const navigate = useNavigate();
     const carts = useSelector((state) => state.dataCart.carts);
     const [subTotal, setSubTotal] = useState(0);
     const location = useLocation();
     const { total, shippingOption } = location.state || { total: 0, shippingOption: '' };
+    const [errors, setErrors] = useState({});
+    const [formData, setFormData] = useState({
+        name: localStorage.getItem('username') || '',
+        email: '',
+        phone: '',
+        address: '',
+        note: '',
+        subject: 'none',
+        message: 'none',
+    });
 
-    const caculateSubTotal = () => {
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+
+    const calculateSubTotal = () => {
         let total = 0;
         carts.forEach((item) => {
             total += item.price * item.qty;
@@ -17,8 +41,33 @@ function Checkout() {
         setSubTotal(total);
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const validationErrors = validateForm(formData);
+        setErrors(validationErrors);
+
+        if (Object.keys(validationErrors).length === 0) {
+            toast.success('Send successfully!');
+            setFormData({
+                name: localStorage.getItem('username') || '',
+                email: '',
+                phone: '',
+                address: '',
+                note: '',
+                subject: 'none',
+                message: 'none',
+            });
+            dipatch(delAllCart());
+            navigate('/checkout_sucess');
+            localStorage.setItem('dataCart', carts);
+            localStorage.setItem('id', generateRandomID(10));
+        } else {
+            toast.error('Form not empty!');
+        }
+    };
+
     useEffect(() => {
-        caculateSubTotal();
+        calculateSubTotal();
     }, [carts]);
 
     return (
@@ -37,33 +86,70 @@ function Checkout() {
                     />
                     <button className="bg-primary text-white min-w-[170px] py-[8.5px]">Add</button>
                 </div>
-                <div className="flex gap-5 lg:flex-row flex-col">
+                <form onSubmit={handleSubmit} className="flex gap-5 lg:flex-row flex-col">
                     <div className="lg:w-[70%] w-full">
                         <h3 className="mt-[22px] mb-[18px] text-base text-[#1a1a1a] font-medium">Billing Details</h3>
                         <div className="flex justify-between lg:flex-row flex-col items-center gap-5">
+                            <input
+                                hidden
+                                id="subject"
+                                onChange={handleChange}
+                                name="subject"
+                                value={formData.subject}
+                                type="text"
+                                className="bg-[#f9f9f9] mb-3 w-full focus:border-primary focus:bg-white transition-colors outline-none border border-gray py-[8.5px] px-3 text-sm text-[#777]"
+                            />
+                            <textarea
+                                hidden
+                                id="message"
+                                onChange={handleChange}
+                                name="message"
+                                value={formData.message}
+                                placeholder="Write your message here"
+                                rows="7"
+                                className="bg-[#f9f9f9] mb-3 w-full focus:border-primary focus:bg-white transition-colors outline-none border border-gray py-[8.5px] px-3 text-sm font-light text-[#777]"
+                            ></textarea>
                             <div className="w-full">
-                                <label htmlFor="" className="block text-sm text-[#666] mb-1">
+                                <label htmlFor="name" className="block text-sm text-[#666] mb-1">
                                     Full Name*
                                 </label>
                                 <input
+                                    id="name"
+                                    onChange={handleChange}
+                                    name="name"
+                                    value={formData.name}
                                     type="text"
                                     className="bg-[#f9f9f9] mb-3 w-full focus:border-primary focus:bg-white transition-colors outline-none border border-gray py-[8.5px] px-3 text-sm text-[#777]"
                                 />
                             </div>
                             <div className="w-full">
-                                <label htmlFor="" className="block text-sm text-[#666] mb-1">
+                                <div>
+                                    {errors.phone && <p className="text-xs mb-1 text-[#e84118]">{errors.phone}</p>}
+                                </div>
+                                <label htmlFor="phone" className="block text-sm text-[#666] mb-1">
                                     Phone number*
                                 </label>
                                 <input
+                                    id="phone"
+                                    onChange={handleChange}
+                                    name="phone"
+                                    value={formData.phone}
                                     type="text"
                                     className="bg-[#f9f9f9] mb-3 w-full focus:border-primary focus:bg-white transition-colors outline-none border border-gray py-[8.5px] px-3 text-sm text-[#777]"
                                 />
                             </div>
                             <div className="w-full">
-                                <label htmlFor="" className="block text-sm text-[#666] mb-1">
-                                    District/Town *
+                                <div>
+                                    {errors.email && <p className="text-xs mb-1 text-[#e84118]">{errors.email}</p>}
+                                </div>
+                                <label htmlFor="email" className="block text-sm text-[#666] mb-1">
+                                    Email*
                                 </label>
                                 <input
+                                    id="email"
+                                    onChange={handleChange}
+                                    name="email"
+                                    value={formData.email}
                                     type="text"
                                     className="bg-[#f9f9f9] mb-3 w-full focus:border-primary focus:bg-white transition-colors outline-none border border-gray py-[8.5px] px-3 text-sm text-[#777]"
                                 />
@@ -71,58 +157,80 @@ function Checkout() {
                         </div>
                         <div className="flex justify-between lg:flex-row flex-col items-center gap-5 mb-3">
                             <div className="w-full">
-                                <label htmlFor="" className="block text-sm text-[#666] mb-1">
+                                <label htmlFor="province" className="block text-sm text-[#666] mb-1">
                                     Province/City *
                                 </label>
                                 <select
-                                    name=""
-                                    id=""
+                                    id="province"
+                                    name="province"
+                                    onChange={handleChange}
+                                    value={formData.province}
                                     className="outline-none w-full bg-[#f9f9f9] border border-gray py-[8.5px] px-3 text-sm text-[#777]"
                                 >
-                                    <option value="">Hà Nội</option>
-                                    <option value="">Nam Định</option>
+                                    <option value="">Select a province/city</option>
+                                    <option value="Hà Nội">Hà Nội</option>
+                                    <option value="Nam Định">Nam Định</option>
                                 </select>
                             </div>
                             <div className="w-full">
-                                <label htmlFor="" className="block text-sm text-[#666] mb-1">
-                                    Province/City *
+                                <label htmlFor="district" className="block text-sm text-[#666] mb-1">
+                                    District *
                                 </label>
                                 <select
-                                    name=""
+                                    id="district"
+                                    name="district"
+                                    onChange={handleChange}
+                                    value={formData.district}
                                     className="outline-none w-full bg-[#f9f9f9] border border-gray py-[8.5px] px-3 text-sm text-[#777]"
                                 >
-                                    <option value="">Hà Nội</option>
-                                    <option value="">Nam Định</option>
+                                    <option value="">Select a district</option>
+                                    <option value="District 1">District 1</option>
+                                    <option value="District 2">District 2</option>
                                 </select>
                             </div>
                             <div className="w-full">
-                                <label htmlFor="" className="block text-sm text-[#666] mb-1">
+                                <label htmlFor="ward" className="block text-sm text-[#666] mb-1">
                                     Ward *
                                 </label>
                                 <select
-                                    name=""
-                                    id=""
+                                    id="ward"
+                                    name="ward"
+                                    onChange={handleChange}
+                                    value={formData.ward}
                                     className="outline-none w-full bg-[#f9f9f9] border border-gray py-[8.5px] px-3 text-sm text-[#777]"
                                 >
-                                    <option value="">Hà Nội</option>
-                                    <option value="">Nam Định</option>
+                                    <option value="">Select a ward</option>
+                                    <option value="Ward 1">Ward 1</option>
+                                    <option value="Ward 2">Ward 2</option>
                                 </select>
                             </div>
                         </div>
                         <div>
-                            <label htmlFor="" className="block text-sm text-[#666] mb-1">
+                            <div>
+                                {errors.address && <p className="text-xs mb-1 text-[#e84118]">{errors.address}</p>}
+                            </div>
+                            <label htmlFor="address" className="block text-sm text-[#666] mb-1">
                                 Street address*
                             </label>
                             <input
+                                id="address"
+                                onChange={handleChange}
+                                name="address"
+                                value={formData.address}
                                 type="text"
                                 className="bg-[#f9f9f9] mb-3 w-full focus:border-primary focus:bg-white transition-colors outline-none border border-gray py-[8.5px] px-3 text-sm text-[#777]"
                             />
                         </div>
                         <div>
-                            <label htmlFor="" className="block text-sm text-[#666] mb-1">
+                            <div>{errors.note && <p className="text-xs mb-1 text-[#e84118]">{errors.note}</p>}</div>
+                            <label htmlFor="note" className="block text-sm text-[#666] mb-1">
                                 Order notes (optional)
                             </label>
                             <textarea
+                                id="note"
+                                onChange={handleChange}
+                                name="note"
+                                value={formData.note}
                                 placeholder="Notes about your order, e.g. special notes for delivery"
                                 rows="7"
                                 className="bg-[#f9f9f9] mb-3 w-full focus:border-primary focus:bg-white transition-colors outline-none border border-gray py-[8.5px] px-3 text-sm font-light text-[#777]"
@@ -165,9 +273,9 @@ function Checkout() {
                                         <p>Shipping:</p>
                                     </td>
                                     <td className="text-sm min-w-[100px] text-right">
-                                        {(shippingOption == 0 && 'Free Ship') ||
-                                            (shippingOption === 10 && 'Standard') ||
-                                            (shippingOption === 20 && 'Express')}
+                                        {shippingOption === 0 && 'Free Ship'}
+                                        {shippingOption === 10 && 'Standard'}
+                                        {shippingOption === 20 && 'Express'}
                                     </td>
                                 </tr>
                                 <tr className="h-[70px]  font-light">
@@ -184,7 +292,7 @@ function Checkout() {
                             <div className="flex items-center gap-2">
                                 <input
                                     type="radio"
-                                    name="shipping"
+                                    name="payment"
                                     className="cursor-pointer w-4 h-4 hover:text-primary transition-colors"
                                     id="direct"
                                 />
@@ -197,7 +305,7 @@ function Checkout() {
                             <div className="flex items-center gap-2">
                                 <input
                                     type="radio"
-                                    name="shipping"
+                                    name="payment"
                                     className="cursor-pointer w-4 h-4 hover:text-primary transition-colors"
                                     id="cash"
                                 />
@@ -210,7 +318,7 @@ function Checkout() {
                             Place Order
                         </button>
                     </div>
-                </div>
+                </form>
             </section>
         </main>
     );

@@ -13,6 +13,8 @@ function ContactForm() {
         phone: '',
         subject: '',
         message: '',
+        note: 'none',
+        address: 'none',
     });
 
     const handleChange = (e) => {
@@ -27,6 +29,8 @@ function ContactForm() {
         e.preventDefault();
         const validationErrors = validateForm(formData);
         setErrors(validationErrors);
+        console.log(formData);
+        console.log(validationErrors);
 
         if (Object.keys(validationErrors).length === 0) {
             toast.success('Send successfuly!');
@@ -36,6 +40,8 @@ function ContactForm() {
                 phone: '',
                 subject: '',
                 message: '',
+                note: 'none',
+                address: 'none',
             });
         } else {
             toast.error('Form not empty!');

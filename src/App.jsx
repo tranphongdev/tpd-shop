@@ -17,6 +17,7 @@ const Orders = React.lazy(() => import('./pages/Dashboard/Orders/Orders'));
 const Account = React.lazy(() => import('./pages/Dashboard/Account/Account'));
 const Contact = React.lazy(() => import('./pages/Contact/Contact'));
 const Blog = React.lazy(() => import('./pages/Blog/Blog'));
+const CheckoutSucess = React.lazy(() => import('./pages/Checkout/CheckoutSucess/CheckoutSucess'));
 
 function App() {
     return (
@@ -38,6 +39,7 @@ function App() {
                         <Route path="/checkout" element={<Checkout />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/blog" element={<Blog />} />
+                        <Route path="/checkout_sucess" element={<CheckoutSucess />} />
                         <Route path="/dashboard" element={<Dashboard />}>
                             <Route path="/dashboard" element={<Account />} />
                             <Route path="/dashboard/orders" element={<Orders />} />

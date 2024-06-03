@@ -31,5 +31,13 @@ export function validateForm(data) {
         errors.message = 'Message is required.';
     }
 
+    if (!data.address) {
+        errors.address = 'Address is required.';
+    }
+
+    if (!data.note) {
+        errors.note = 'Note is required.';
+    }
+
     return errors;
 }
