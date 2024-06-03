@@ -24,6 +24,7 @@ function Checkout() {
         subject: 'none',
         message: 'none',
     });
+    const cartsJSON = JSON.stringify(carts);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -59,7 +60,7 @@ function Checkout() {
             });
             dipatch(delAllCart());
             navigate('/checkout_sucess');
-            localStorage.setItem('dataCart', carts);
+            localStorage.setItem('dataCart', cartsJSON);
             localStorage.setItem('id', generateRandomID(10));
         } else {
             toast.error('Form not empty!');

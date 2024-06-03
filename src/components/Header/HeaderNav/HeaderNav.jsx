@@ -163,7 +163,7 @@ function HeaderNav() {
                                 <div className="flex justify-between items-center">
                                     <Link
                                         to="/cart"
-                                        className="capitalize bg-primary text-white py-2 px-4 min-w-[110px] hover:bg-[#0097e6] transition-colors"
+                                        className="capitalize text-center bg-primary text-white py-2 px-4 min-w-[110px] hover:bg-[#0097e6] transition-colors"
                                     >
                                         View cart
                                     </Link>

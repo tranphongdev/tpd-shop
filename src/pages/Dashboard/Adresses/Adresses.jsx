@@ -10,13 +10,13 @@ function Adresses() {
             <div className="pt-10 px-[28px] pb-5 bg-[#f9f9f9]">
                 <h3 className="mb-[15px] text-xl">Billing Address</h3>
                 <p className="font-bold text-[#777] text-sm mb-2">
-                    Fullname: <span className="font-normal">TranPhong</span>
+                    Fullname: <span className="font-normal">Tran Dinh Phong</span>
                 </p>
                 <p className="font-bold text-[#777] text-sm mb-2">
-                    Email: <span className="font-normal">TranPhong</span>
+                    Email: <span className="font-normal">dinhphong.work@gmail.com</span>
                 </p>
                 <p className="font-bold text-[#777] text-sm mb-2">
-                    Phone number: <span className="font-normal">TranPhong</span>
+                    Phone number: <span className="font-normal">098 197 2202</span>
                 </p>
                 <Link to="/dashboard" className="text-primary mt-5 flex items-center gap-1 text-sm">
                     Edit <FiEdit />

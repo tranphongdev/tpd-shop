@@ -10,7 +10,7 @@ function CheckoutSucess() {
                     Your order <span className="text-text font-bold">{localStorage.getItem('id')}</span> has been
                     completed. Your order details are shown for your personal accont.
                 </p>
-                <Link to="/" className="flex justify-center">
+                <Link to="/dashboard/orders" className="flex justify-center">
                     <button className="flex items-center hover:bg-primary hover:text-white transition-colors gap-2 justify-center border border-primary text-primary text-sm min-w-[218px] py-[8.5px]">
                         View my orders <MdOutlineArrowRightAlt />
                     </button>
