@@ -1,8 +1,24 @@
-# React + Vite
+# Research TPDShop Polaris
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Requirements
 
-Currently, two official plugins are available:
+-   **Nodejs > v18.2.x**
 
--   [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
--   [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Clone project and run example.
+
+```
+$ git clone https://project_url_clone
+$ cd <project_dir>
+$ npm install or yarn install
+$ npm run dev or yarn dev
+```
+
+### About Me
+
+Author: Trần Phong
+
+CV: https://cv-tranphongdev.vercel.app/
+
+"A little bit of fragrance always clings to the hands that gives you roses!"
+
+Thanks for watching!
