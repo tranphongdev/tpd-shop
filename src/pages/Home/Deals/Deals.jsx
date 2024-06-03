@@ -3,6 +3,7 @@ import bg from '~/assets/images/bg-1.jpg';
 import ProductItem from '~/components/Product/ProductItem/ProductItem';
 import { MdOutlineArrowRightAlt } from 'react-icons/md';
 import Countdown from '../Coutdown/Coutdown';
+import { Link } from 'react-router-dom';
 
 function Deals() {
     const products = useSelector((state) => state.dataProduct.products);
@@ -58,9 +59,12 @@ function Deals() {
                 </div>
 
                 <div className="text-center flex justify-center mt-[30px]">
-                    <button className="hover:bg-white hover:text-primary transition-colors flex items-center gap-2 border border-[#d7d7d7] rounded-[40px] py-3 px-4 min-w-[270px] text-sm justify-center">
+                    <Link
+                        to="/product"
+                        className="hover:bg-white hover:text-primary transition-colors flex items-center gap-2 border border-[#d7d7d7] rounded-[40px] py-3 px-4 min-w-[270px] text-sm justify-center"
+                    >
                         Shop More <MdOutlineArrowRightAlt className="w-5 h-5" />
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>

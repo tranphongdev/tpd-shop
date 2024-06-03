@@ -82,7 +82,7 @@ function Footer() {
                         <li>
                             <Link
                                 className="text-[#777] text-sm font-light block mb-2 hover:text-primary transition-colors"
-                                to=""
+                                to="/dashboard"
                             >
                                 Account Details
                             </Link>
@@ -90,7 +90,7 @@ function Footer() {
                         <li>
                             <Link
                                 className="text-[#777] text-sm font-light block mb-2 hover:text-primary transition-colors"
-                                to=""
+                                to="/cart"
                             >
                                 View Cart
                             </Link>
@@ -98,7 +98,7 @@ function Footer() {
                         <li>
                             <Link
                                 className="text-[#777] text-sm font-light block mb-2 hover:text-primary transition-colors"
-                                to=""
+                                to="/dashboard/wishlist"
                             >
                                 My Wishlist
                             </Link>
@@ -106,7 +106,7 @@ function Footer() {
                         <li>
                             <Link
                                 className="text-[#777] text-sm font-light block mb-2 hover:text-primary transition-colors"
-                                to=""
+                                to="/dashboard/orders"
                             >
                                 Track My Order
                             </Link>

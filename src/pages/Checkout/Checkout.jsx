@@ -48,7 +48,7 @@ function Checkout() {
         setErrors(validationErrors);
 
         if (Object.keys(validationErrors).length === 0) {
-            toast.success('Send successfully!');
+            toast.success('Đặt hàng thành công!');
             setFormData({
                 name: localStorage.getItem('username') || '',
                 email: '',
@@ -63,7 +63,7 @@ function Checkout() {
             localStorage.setItem('dataCart', cartsJSON);
             localStorage.setItem('id', generateRandomID(10));
         } else {
-            toast.error('Form not empty!');
+            toast.error('Không đúng định dạng form!');
         }
     };
 
