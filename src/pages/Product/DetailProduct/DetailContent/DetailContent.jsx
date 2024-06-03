@@ -46,8 +46,8 @@ function DetailContent({ data }) {
             {modal && <Modal toggleModal={toggleModal} />}
             <section className="page-wrapper">
                 <div className="flex lg:flex-row flex-col gap-5 items-start">
-                    <div className="lg:w-1/2 w-full flex gap-[10px]">
-                        <div className="w-1/5">
+                    <div className="lg:w-1/2 w-full flex lg:flex-row flex-col gap-[10px]">
+                        <div className="lg:w-1/5 w-full lg:block flex flex-wrap gap-3">
                             {data?.images?.map((item, index) => (
                                 <img
                                     key={index}
@@ -60,7 +60,7 @@ function DetailContent({ data }) {
                                 />
                             ))}
                         </div>
-                        <div className="w-4/5">
+                        <div className="lg:w-4/5 w-full">
                             <img
                                 loading="lazy"
                                 src={selectedImg ? selectedImg : data?.images?.[0]}
