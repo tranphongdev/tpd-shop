@@ -99,4 +99,319 @@ const blogs = [
     },
 ];
 
-export { navLinks, sliders, banners, brands, blogs };
+const vietnamProvinces = [
+    {
+        name: 'An Giang',
+        population: 2178530,
+        area: 3536.7,
+        capital: 'Long Xuyên',
+    },
+    {
+        name: 'Bà Rịa - Vũng Tàu',
+        population: 1121000,
+        area: 1989.2,
+        capital: 'Vũng Tàu',
+    },
+    {
+        name: 'Bắc Giang',
+        population: 1948100,
+        area: 3848.9,
+        capital: 'Bắc Giang',
+    },
+    {
+        name: 'Bắc Kạn',
+        population: 300069,
+        area: 4860.3,
+        capital: 'Bắc Kạn',
+    },
+    {
+        name: 'Bạc Liêu',
+        population: 874700,
+        area: 2359.4,
+        capital: 'Bạc Liêu',
+    },
+    {
+        name: 'Bắc Ninh',
+        population: 1103100,
+        area: 822.7,
+        capital: 'Bắc Ninh',
+    },
+    {
+        name: 'Bến Tre',
+        population: 1258700,
+        area: 2301.6,
+        capital: 'Bến Tre',
+    },
+    {
+        name: 'Biên Hòa',
+        population: 1053500,
+        area: 2694.7,
+        capital: 'Biên Hòa',
+    },
+    {
+        name: 'Bình Định',
+        population: 1519300,
+        area: 6050.6,
+        capital: 'Quy Nhơn',
+    },
+    {
+        name: 'Bình Dương',
+        population: 2481700,
+        area: 2695.0,
+        capital: 'Thủ Dầu Một',
+    },
+    {
+        name: 'Bình Phước',
+        population: 965800,
+        area: 6870.9,
+        capital: 'Đồng Xoài',
+    },
+    {
+        name: 'Bình Thuận',
+        population: 1242300,
+        area: 7828.4,
+        capital: 'Phan Thiết',
+    },
+    {
+        name: 'Cà Mau',
+        population: 1238800,
+        area: 5294.1,
+        capital: 'Cà Mau',
+    },
+    {
+        name: 'Cao Bằng',
+        population: 516600,
+        area: 6707.1,
+        capital: 'Cao Bằng',
+    },
+    {
+        name: 'Đà Nẵng',
+        population: 1134800,
+        area: 1283.4,
+        capital: 'Đà Nẵng',
+    },
+    {
+        name: 'Đắk Lắk',
+        population: 1935600,
+        area: 13125.4,
+        capital: 'Buôn Ma Thuột',
+    },
+    {
+        name: 'Đắk Nông',
+        population: 543900,
+        area: 6515.8,
+        capital: 'Gia Nghĩa',
+    },
+    {
+        name: 'Điện Biên',
+        population: 590200,
+        area: 9562.9,
+        capital: 'Điện Biên Phủ',
+    },
+    {
+        name: 'Đồng Nai',
+        population: 2966100,
+        area: 5863.4,
+        capital: 'Biên Hòa',
+    },
+    {
+        name: 'Đồng Tháp',
+        population: 1678800,
+        area: 3377.0,
+        capital: 'Cao Lãnh',
+    },
+    {
+        name: 'Gia Lai',
+        population: 1455300,
+        area: 15536.7,
+        capital: 'Pleiku',
+    },
+    {
+        name: 'Hà Giang',
+        population: 809200,
+        area: 7914.9,
+        capital: 'Hà Giang',
+    },
+    {
+        name: 'Hà Nam',
+        population: 800700,
+        area: 863.9,
+        capital: 'Phủ Lý',
+    },
+    {
+        name: 'Hà Nội',
+        population: 8053800,
+        area: 3358.9,
+        capital: 'Hà Nội',
+    },
+    {
+        name: 'Hà Tĩnh',
+        population: 1242800,
+        area: 5974.0,
+        capital: 'Hà Tĩnh',
+    },
+    {
+        name: 'Hải Dương',
+        population: 1758400,
+        area: 1656.6,
+        capital: 'Hải Dương',
+    },
+    {
+        name: 'Hải Phòng',
+        population: 2014400,
+        area: 1540.6,
+        capital: 'Hải Phòng',
+    },
+    {
+        name: 'Hậu Giang',
+        population: 787100,
+        area: 1602.6,
+        capital: 'Vị Thanh',
+    },
+    {
+        name: 'Hoà Bình',
+        population: 848100,
+        area: 4604.6,
+        capital: 'Hoà Bình',
+    },
+    {
+        name: 'Hưng Yên',
+        population: 1169400,
+        area: 929.2,
+        capital: 'Hưng Yên',
+    },
+    {
+        name: 'Khánh Hòa',
+        population: 1226200,
+        area: 5217.0,
+        capital: 'Nha Trang',
+    },
+    {
+        name: 'Kiên Giang',
+        population: 1730800,
+        area: 6348.5,
+        capital: 'Rạch Giá',
+    },
+    {
+        name: 'Kon Tum',
+        population: 526900,
+        area: 9668.8,
+        capital: 'Kon Tum',
+    },
+    {
+        name: 'Lai Châu',
+        population: 415400,
+        area: 9068.3,
+        capital: 'Lai Châu',
+    },
+    {
+        name: 'Lâm Đồng',
+        population: 1379100,
+        area: 9801.1,
+        capital: 'Đà Lạt',
+    },
+    {
+        name: 'Lạng Sơn',
+        population: 760400,
+        area: 8320.1,
+        capital: 'Lạng Sơn',
+    },
+    {
+        name: 'Lào Cai',
+        population: 693700,
+        area: 6383.9,
+        capital: 'Lào Cai',
+    },
+    {
+        name: 'Long An',
+        population: 1591900,
+        area: 4492.7,
+        capital: 'Tân An',
+    },
+    {
+        name: 'Nam Định',
+        population: 1836000,
+        area: 1652.6,
+        capital: 'Nam Định',
+    },
+    {
+        name: 'Nghệ An',
+        population: 2951600,
+        area: 16490,
+        capital: 'Nam Định',
+    },
+];
+
+const districts = [
+    {
+        province: 'An Giang',
+        districts: [
+            'Châu Phú',
+            'Châu Thành',
+            'Chợ Mới',
+            'Phú Tân',
+            'Tân Châu',
+            'Thoại Sơn',
+            'Tri Tôn',
+            'Tịnh Biên',
+            'Tân Phú Đông',
+        ],
+    },
+    {
+        province: 'Bà Rịa - Vũng Tàu',
+        districts: ['Bà Rịa', 'Côn Đảo', 'Châu Đức', 'Đất Đỏ', 'Long Điền', 'Tân Thành', 'Vũng Tàu'],
+    },
+    {
+        province: 'Bắc Giang',
+        districts: ['Bắc Giang', 'Yên Dũng', 'Việt Yên', 'Lục Nam', 'Lục Ngạn', 'Sơn Động', 'Lạng Giang', 'Hiệp Hòa'],
+    },
+    {
+        province: 'Bắc Kạn',
+        districts: ['Bắc Kạn', 'Pác Nặm', 'Ba Bể', 'Ngân Sơn', 'Chợ Đồn', 'Chợ Mới', 'Na Rì'],
+    },
+    {
+        province: 'Bạc Liêu',
+        districts: ['Bạc Liêu', 'Hòa Bình', 'Phước Long', 'Vĩnh Lợi', 'Giá Rai', 'Đông Hải', 'Hoàng Hóa'],
+    },
+    {
+        province: 'Bắc Ninh',
+        districts: ['Bắc Ninh', 'Yên Phong', 'Quế Võ', 'Tiên Du', 'Từ Sơn', 'Gia Bình', 'Lương Tài'],
+    },
+    {
+        province: 'Bến Tre',
+        districts: ['Bến Tre', 'Châu Thành', 'Chợ Lách', 'Giồng Trôm', 'Mỏ Cày Bắc', 'Mỏ Cày Nam', 'Thạnh Phú'],
+    },
+    {
+        province: 'Biên Hòa',
+        districts: ['Biên Hòa', 'Long Khánh', 'Tân Phú', 'Thống Nhất', 'Vĩnh Cửu', 'Xuân Lộc'],
+    },
+    {
+        province: 'Bình Định',
+        districts: [
+            'Quy Nhơn',
+            'An Lão',
+            'Hoài Ân',
+            'Hoài Nhơn',
+            'Phù Mỹ',
+            'Phù Cát',
+            'Tuy Phước',
+            'Vân Canh',
+            'Vĩnh Thạnh',
+        ],
+    },
+    {
+        province: 'Bình Dương',
+        districts: [
+            'Thủ Dầu Một',
+            'Bắc Tân Uyên',
+            'Bến Cát',
+            'Dầu Tiếng',
+            'Dĩ An',
+            'Phú Giáo',
+            'Tân Uyên',
+            'Thạnh Phú',
+        ],
+    },
+];
+
+export { navLinks, sliders, banners, brands, blogs, vietnamProvinces, districts };

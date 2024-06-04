@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Breadcrumb from '~/components/Breadcrumb/Breadcrumb';
+import { vietnamProvinces } from '~/constants';
 import { delAllCart } from '~/redux/features/cartSlice';
 import { generateRandomID } from '~/utils/randomId';
 import { validateForm } from '~/utils/rules';
@@ -168,9 +169,11 @@ function Checkout() {
                                     value={formData.province}
                                     className="outline-none w-full bg-[#f9f9f9] border border-gray py-[8.5px] px-3 text-sm text-[#777]"
                                 >
-                                    <option value="">Select a province/city</option>
-                                    <option value="Hà Nội">Hà Nội</option>
-                                    <option value="Nam Định">Nam Định</option>
+                                    {vietnamProvinces?.map((item) => (
+                                        <option key={item?.area} value={item?.area}>
+                                            {item?.name}
+                                        </option>
+                                    ))}
                                 </select>
                             </div>
                             <div className="w-full">
@@ -184,9 +187,11 @@ function Checkout() {
                                     value={formData.district}
                                     className="outline-none w-full bg-[#f9f9f9] border border-gray py-[8.5px] px-3 text-sm text-[#777]"
                                 >
-                                    <option value="">Select a district</option>
-                                    <option value="District 1">District 1</option>
-                                    <option value="District 2">District 2</option>
+                                    {vietnamProvinces?.map((item) => (
+                                        <option key={item?.area} value={item?.area}>
+                                            {item?.name}
+                                        </option>
+                                    ))}
                                 </select>
                             </div>
                             <div className="w-full">
@@ -200,9 +205,11 @@ function Checkout() {
                                     value={formData.ward}
                                     className="outline-none w-full bg-[#f9f9f9] border border-gray py-[8.5px] px-3 text-sm text-[#777]"
                                 >
-                                    <option value="">Select a ward</option>
-                                    <option value="Ward 1">Ward 1</option>
-                                    <option value="Ward 2">Ward 2</option>
+                                    {vietnamProvinces?.map((item) => (
+                                        <option key={item?.area} value={item?.area}>
+                                            {item?.name}
+                                        </option>
+                                    ))}
                                 </select>
                             </div>
                         </div>

@@ -1,4 +1,5 @@
 import { MdOutlineArrowRightAlt } from 'react-icons/md';
+import { vietnamProvinces } from '~/constants';
 
 function Account() {
     return (
@@ -20,6 +21,7 @@ function Account() {
                         Email address*
                     </label>
                     <input
+                        value="dinhphong@gmail.com"
                         type="text"
                         className="bg-[#f9f9f9] mb-5 w-full focus:border-primary focus:bg-white transition-colors outline-none border border-gray py-[8.5px] px-3 text-sm text-[#777]"
                     />
@@ -31,6 +33,7 @@ function Account() {
                         Phone number*
                     </label>
                     <input
+                        value="098 197 2202"
                         type="text"
                         className="bg-[#f9f9f9] mb-5 w-full focus:border-primary focus:bg-white transition-colors outline-none border border-gray py-[8.5px] px-3 text-sm text-[#777]"
                     />
@@ -55,8 +58,11 @@ function Account() {
                         id=""
                         className="outline-none w-full bg-[#f9f9f9] border border-gray py-[8.5px] px-3 text-sm text-[#777]"
                     >
-                        <option value="">Hà Nội</option>
-                        <option value="">Nam Định</option>
+                        {vietnamProvinces?.map((item) => (
+                            <option key={item?.area} value={item?.area}>
+                                {item?.name}
+                            </option>
+                        ))}
                     </select>
                 </div>
                 <div className="w-full">
@@ -67,8 +73,11 @@ function Account() {
                         name=""
                         className="outline-none w-full bg-[#f9f9f9] border border-gray py-[8.5px] px-3 text-sm text-[#777]"
                     >
-                        <option value="">Hà Nội</option>
-                        <option value="">Nam Định</option>
+                        {vietnamProvinces?.map((item) => (
+                            <option key={item?.area} value={item?.area}>
+                                {item?.name}
+                            </option>
+                        ))}
                     </select>
                 </div>
                 <div className="w-full">
@@ -80,8 +89,11 @@ function Account() {
                         id=""
                         className="outline-none w-full bg-[#f9f9f9] border border-gray py-[8.5px] px-3 text-sm text-[#777]"
                     >
-                        <option value="">Hà Nội</option>
-                        <option value="">Nam Định</option>
+                        {vietnamProvinces?.map((item) => (
+                            <option key={item?.area} value={item?.area}>
+                                {item?.name}
+                            </option>
+                        ))}
                     </select>
                 </div>
             </div>

@@ -29,7 +29,11 @@ function DetailContent({ data }) {
     };
 
     const handleAddWishList = (item) => {
-        dispatch(addToWishList(item));
+        if (user) {
+            dispatch(addToWishList(item));
+        } else {
+            setModal(true);
+        }
     };
 
     const handleAddToCart = (item) => {
