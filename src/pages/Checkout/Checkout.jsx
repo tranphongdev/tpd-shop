@@ -18,8 +18,8 @@ function Checkout() {
     const [errors, setErrors] = useState({});
     const [formData, setFormData] = useState({
         name: localStorage.getItem('username') || '',
-        email: '',
-        phone: '',
+        email: 'dinhphong.work@gmail.com',
+        phone: '0981972202',
         address: '',
         note: '',
         subject: 'none',
@@ -132,6 +132,7 @@ function Checkout() {
                                     Phone number*
                                 </label>
                                 <input
+                                    readOnly
                                     id="phone"
                                     onChange={handleChange}
                                     name="phone"
@@ -148,6 +149,7 @@ function Checkout() {
                                     Email*
                                 </label>
                                 <input
+                                    readOnly
                                     id="email"
                                     onChange={handleChange}
                                     name="email"
