@@ -87,7 +87,7 @@ function DetailContent({ data }) {
                             className="text-[#777] text-sm font-light mb-4 leading-7"
                             dangerouslySetInnerHTML={{ __html: data?.description || '' }}
                         />
-                        <div className="flex items-center gap-4 mb-5">
+                        <div className="flex items-center gap-4 mb-5 justify-center lg:justify-start">
                             <span className="text-sm">Qty:</span>
                             <div className="flex items-center">
                                 <button
@@ -108,7 +108,7 @@ function DetailContent({ data }) {
                             </div>
                         </div>
 
-                        <div className="flex items-center gap-5 mb-[30px]">
+                        <div className="flex lg:flex-row flex-col items-center gap-5 mb-[30px]">
                             <button
                                 onClick={() => handleAddToCart(data)}
                                 className="flex items-center gap-2 transition-colors hover:bg-primary hover:text-white capitalize justify-center py-[10px] px-[15px] text-[16px] font-light min-w-[198px] border border-gray"
