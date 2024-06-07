@@ -9,6 +9,7 @@ import ApiServices from '~/services/ApiServices';
 function ProductContent() {
     const [products, setProducts] = useState([]);
     const [totalPage, setTotalPage] = useState(0);
+    const [totalProduct, settotalProduct] = useState(0);
     const [showToggle, setShowToggle] = useState(false);
     // const products = useSelector((state) => state.dataProduct.products);
     const categories = products.map((item) => item.category.name);
@@ -23,6 +24,7 @@ function ProductContent() {
         let pageTotal = Math.ceil(pagination.total / pagination.limit);
         setProducts(products);
         setTotalPage(pageTotal);
+        settotalProduct(pagination.total);
     };
 
     useEffect(() => {
@@ -119,7 +121,7 @@ function ProductContent() {
                     <div className="text-sm text-[#ccc]">
                         Showing{' '}
                         <span className="text-[#1a1a1a]">
-                            {filteredAndSortedProducts.length} of {products.length}
+                            {filteredAndSortedProducts.length} of {totalProduct}
                         </span>{' '}
                         Products
                     </div>
@@ -153,7 +155,7 @@ function ProductContent() {
                     pageRangeDisplayed={1}
                     marginPagesDisplayed={1}
                     pageCount={totalPage}
-                    previousLabel="<div previous"
+                    previousLabel="< previous"
                     pageClassName="page-item"
                     pageLinkClassName="page-link"
                     previousClassName="page-item"
