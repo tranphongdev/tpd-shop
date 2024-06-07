@@ -7,16 +7,15 @@ import ProductItem from '~/components/Product/ProductItem/ProductItem';
 import ApiServices from '~/services/ApiServices';
 
 function ProductContent() {
+    // const products = useSelector((state) => state.dataProduct.products);
     const [products, setProducts] = useState([]);
     const [totalPage, setTotalPage] = useState(0);
     const [totalProduct, settotalProduct] = useState(0);
     const [showToggle, setShowToggle] = useState(false);
-    // const products = useSelector((state) => state.dataProduct.products);
     const categories = products.map((item) => item.category.name);
     const uniqueCategories = [...new Set(categories)];
-
-    const [checkedCategories, setCheckedCategories] = useState({});
     const [sortCriteria, setSortCriteria] = useState('mostPopular');
+    const [checkedCategories, setCheckedCategories] = useState({});
 
     const loadDataProduct = async (limit, page) => {
         const response = await ApiServices.GET_PRODUCT_PAGINATE(limit, page);
@@ -150,12 +149,12 @@ function ProductContent() {
                 </div>
 
                 <ReactPaginate
-                    nextLabel="next >"
+                    nextLabel=">"
                     onPageChange={handlePageClick}
                     pageRangeDisplayed={1}
                     marginPagesDisplayed={1}
                     pageCount={totalPage}
-                    previousLabel="< previous"
+                    previousLabel="<"
                     pageClassName="page-item"
                     pageLinkClassName="page-link"
                     previousClassName="page-item"
