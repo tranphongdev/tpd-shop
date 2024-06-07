@@ -9,6 +9,9 @@ const ApiServices = {
     GET_PRODUCT_BY_NAME: async (slug) => {
         return await axios(`${URL}/${slug}`);
     },
+    GET_PRODUCT_PAGINATE: async (limit, page) => {
+        return await axios(`${URL}?limit=${limit}&page=${page}`);
+    },
 };
 
 export default ApiServices;

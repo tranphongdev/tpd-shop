@@ -1,16 +1,33 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
-import { useSelector } from 'react-redux';
+import ReactPaginate from 'react-paginate';
+// import { useSelector } from 'react-redux';
+
 import ProductItem from '~/components/Product/ProductItem/ProductItem';
+import ApiServices from '~/services/ApiServices';
 
 function ProductContent() {
+    const [products, setProducts] = useState([]);
+    const [totalPage, setTotalPage] = useState(0);
     const [showToggle, setShowToggle] = useState(false);
-    const products = useSelector((state) => state.dataProduct.products);
+    // const products = useSelector((state) => state.dataProduct.products);
     const categories = products.map((item) => item.category.name);
     const uniqueCategories = [...new Set(categories)];
 
     const [checkedCategories, setCheckedCategories] = useState({});
     const [sortCriteria, setSortCriteria] = useState('mostPopular');
+
+    const loadDataProduct = async (limit, page) => {
+        const response = await ApiServices.GET_PRODUCT_PAGINATE(limit, page);
+        const { products, pagination } = response.data.data;
+        let pageTotal = Math.ceil(pagination.total / pagination.limit);
+        setProducts(products);
+        setTotalPage(pageTotal);
+    };
+
+    useEffect(() => {
+        loadDataProduct(9, 1);
+    }, []);
 
     const handleCheckboxChange = (category) => {
         setCheckedCategories((prev) => ({
@@ -51,6 +68,10 @@ function ProductContent() {
         }
 
         return filteredProducts;
+    };
+
+    const handlePageClick = (e) => {
+        loadDataProduct(9, +e.selected + 1);
     };
 
     const filteredAndSortedProducts = filterProducts();
@@ -125,6 +146,27 @@ function ProductContent() {
                         </div>
                     ))}
                 </div>
+
+                <ReactPaginate
+                    nextLabel="next >"
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={1}
+                    marginPagesDisplayed={1}
+                    pageCount={totalPage}
+                    previousLabel="<div previous"
+                    pageClassName="page-item"
+                    pageLinkClassName="page-link"
+                    previousClassName="page-item"
+                    previousLinkClassName="page-link"
+                    nextClassName="page-item"
+                    nextLinkClassName="page-link"
+                    breakLabel="..."
+                    breakClassName="page-item"
+                    breakLinkClassName="page-link"
+                    containerClassName="pagination"
+                    activeClassName="active"
+                    renderOnZeroPageCount={null}
+                />
             </div>
         </section>
     );
